@@ -6,7 +6,7 @@
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace LRUtest
-{		
+{
 	TEST_CLASS(UnitTest1)
 	{
 	public:
