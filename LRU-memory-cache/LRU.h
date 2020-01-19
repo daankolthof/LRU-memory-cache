@@ -5,6 +5,8 @@
 #include <unordered_map>
 
 /** Main class for the Least-Recently Used (LRU) cache data structure.
+  * This LRU cache will automatically clean up least-recently used elements in case
+  * the program's memory runs out.
 */
 class LRU
 {
@@ -37,6 +39,8 @@ public:
 	
 	/** Insert a key and its associated value pair into the cache. Replacing
 	 * any previous value.
+	 * In case the cache runs out of memory during this call, the value will not be inserted,
+	 * or any existing old value will be in the cache (best-effort approach, no guaranteed insertion).
 	 */
 	void put(const std::string& key, const std::string& value);
 
@@ -67,6 +71,7 @@ private:
 	void visit_listnode(lru_list_type::iterator& node_iterator);
 
 	/** Set a node as most recently used and assign a new value to it.
+	  * In case the cache runs out of memory during this call, the old value will remain in the cache.
 	 */
 	void visit_listnode_new_value(lru_list_type::iterator& node_iterator, const std::string& value);
 
